@@ -6,6 +6,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Firebase from "./features/Firebase/Firebase.jsx";
 import UserContext from "./features/Context/UserContext.jsx"
 import {NextUIProvider} from "@nextui-org/system";
+import Header from "./features/Header/Header.jsx"
+import Products from "./features/Products/Products.jsx";
+import Categories from './features/Categories/Categories.jsx';
+import {Route} from "wouter";
 
 function App() {
   const app = Firebase();
@@ -30,14 +34,27 @@ function App() {
 
   return (
     <>
+    <Header/>
+      <Route path="/products" component={Products}></Route>
+      <Route path="/categories" component={Categories}></Route>
       <NextUIProvider>
+          <UserContext.Provider value={
+            [usuario, setUsuario]
+          }>
+          {usuario ? <Home /> : <Route path="/login" component={Login}></Route>
+          }
+        </UserContext.Provider>
+      </NextUIProvider>
+      
+      {/*<NextUIProvider>
         <UserContext.Provider value={
           [usuario, setUsuario]
         }>
 
-        {usuario ? <Home /> : <Login />}  
+        {usuario ? <Home /> : <Login />}
       </UserContext.Provider>
-      </NextUIProvider>
+        </NextUIProvider>
+      */}
     </>
   )
 }
