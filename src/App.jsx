@@ -35,9 +35,9 @@ function App() {
   return (
     <>
     <Header/>
+    <NextUIProvider>
       <Route path="/products" component={Products}></Route>
       <Route path="/categories" component={Categories}></Route>
-      <NextUIProvider>
           <UserContext.Provider value={
             [usuario, setUsuario]
           }>
@@ -45,16 +45,6 @@ function App() {
           }
         </UserContext.Provider>
       </NextUIProvider>
-      
-      {/*<NextUIProvider>
-        <UserContext.Provider value={
-          [usuario, setUsuario]
-        }>
-
-        {usuario ? <Home /> : <Login />}
-      </UserContext.Provider>
-        </NextUIProvider>
-      */}
     </>
   )
 }
