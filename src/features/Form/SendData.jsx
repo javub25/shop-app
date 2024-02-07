@@ -1,7 +1,7 @@
-import CreateUser from "../User/create.jsx";
-import LoginUser from "../User/login.jsx";
+import CreateUser from "@features/User/create.jsx";
+import LoginUser from "@features/User/login.jsx";
 import { getAuth } from "firebase/auth";
-import EmailValidator from "../Form/EmailValidator.jsx";
+import EmailValidator from "@features/Form/EmailValidator.jsx";
 
 /**
  * The SendData function is used to handle form submission in a React application, performing email
