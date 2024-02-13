@@ -4,8 +4,11 @@ import React from 'react';
 const getProducts = () => 
 {
     const [products, setProducts] = React.useState([]);
+    const [Mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
+        setMounted(true);
+        
         const request = () => 
         {
             axios.get("https://fakestoreapi.com/products")
@@ -21,7 +24,7 @@ const getProducts = () =>
             })
         }
         return () => request();
-    }, [])
+    }, [Mounted])
 
     return products;
 }
